@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慈濟大學醫學系｜系所簡介 Tzu Chi University School of Medicine</title>
+<meta name="description" content="慈濟大學醫學系成立於1994年，是東臺灣唯一的醫學系，以培養尊重生命、以人為本、術德兼修的良醫為宗旨。">
+<link rel="icon" href="graph/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== 設計系統 Design tokens（參考 Harvard / Stanford / Oxford 醫學院網站） ===== */
+:root{
+  --ink:#16202b;      /* 內文 */
+  --navy:#0f3057;     /* 慈濟藍：品牌主色 */
+  --pacific:#1d6fa3;  /* 太平洋藍：連結、互動 */
+  --celadon:#5b9a88;  /* 中央山脈青：強調線 */
+  --mist:#eef2f5;     /* 區塊底色 */
+  --rule:#d5dde4;     /* 分隔線 */
+  --muted:#53606d;
+  --serif:"Noto Serif TC",serif;
+  --sans:"Noto Sans TC",system-ui,sans-serif;
+  --max:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{font-family:var(--sans);color:var(--ink);background:#fff;font-size:17px;line-height:1.8}
+img,video{display:block;max-width:100%}
+a{color:var(--pacific);text-underline-offset:3px}
+a:hover{color:var(--navy)}
+:focus-visible{outline:3px solid var(--celadon);outline-offset:2px}
+.wrap{width:min(var(--max),100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);line-height:1.3;font-weight:700}
+h2{font-size:clamp(1.7rem,3vw,2.35rem);margin-bottom:.8rem}
+h3{font-size:1.25rem;margin-bottom:.4rem}
+p{max-width:38em}
+.lede{font-size:1.12rem;color:var(--muted)}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;background:#fff;padding:8px 14px;z-index:200}
+.more{font-weight:700;text-decoration:none;border-bottom:2px solid var(--celadon);color:var(--navy);padding-bottom:2px}
+.more:hover{border-color:var(--navy)}
+.btn{display:inline-block;padding:13px 26px;font-weight:700;text-decoration:none;border:2px solid currentColor;border-radius:2px;font-size:.95rem}
+.btn.fill{background:#fff;color:var(--navy);border-color:#fff}
+.btn.fill:hover{background:var(--mist)}
+.btn.line{color:#fff}
+.btn.line:hover{background:rgba(255,255,255,.12);color:#fff}
+
+/* ===== 頂端工具列 + 主選單（Stanford 式分類下拉） ===== */
+.utility{background:var(--navy);font-size:.85rem}
+.utility .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:7px 0;flex-wrap:wrap}
+.utility a{color:#d6e2ec;text-decoration:none;margin-right:18px}
+.utility a:hover{color:#fff}
+.utility .apply{color:#fff;font-weight:700;margin-right:0}
+header.site{background:#fff;border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:20px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand img{width:46px;height:46px}
+.brand b{display:block;font-family:var(--serif);font-size:1.3rem;color:var(--navy);line-height:1.25}
+.brand small{display:block;font-size:.8rem;color:var(--muted)}
+nav.main>ul{display:flex;list-style:none}
+nav.main li{position:relative}
+nav.main>ul>li>a{display:block;padding:27px 16px;color:var(--ink);text-decoration:none;font-weight:500}
+nav.main>ul>li>a:hover,nav.main>ul>li:focus-within>a{color:var(--navy);box-shadow:inset 0 -3px 0 var(--celadon)}
+nav.main a[aria-current="page"]{color:var(--navy);box-shadow:inset 0 -3px 0 var(--navy)}
+.sub{position:absolute;left:0;top:100%;min-width:230px;background:#fff;border:1px solid var(--rule);border-top:3px solid var(--navy);list-style:none;padding:10px 0;display:none;box-shadow:0 12px 30px rgba(15,48,87,.12)}
+nav.main li:hover>.sub,nav.main li:focus-within>.sub{display:block}
+.sub a{display:block;padding:8px 20px;color:var(--ink);text-decoration:none;font-size:.95rem}
+.sub a:hover{background:var(--mist);color:var(--navy)}
+.menu-btn{white-space:nowrap;display:none;font:inherit;background:none;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;color:var(--navy);font-weight:700}
+
+/* ===== Hero：直書標題（本網站最具辨識度的元素） ===== */
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--navy)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,30,50,.78) 0%,rgba(15,30,50,.35) 60%,rgba(15,30,50,.15) 100%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:end;min-height:min(78vh,720px);padding:72px 0}
+.hero h1{color:#fff;font-weight:900;font-size:clamp(3rem,6.4vw,5.2rem);align-self:start}
+/* 直書：每字一行，右欄先讀（不依賴字型的直排資訊，各瀏覽器一致） */
+h1.vt{display:flex;flex-direction:row-reverse;gap:.35em}
+h1.vt span{display:block;width:1em;word-break:break-all;line-height:1.12;text-align:center}
+h1.vt span:last-child{padding-top:1.2em}
+.hero .intro{max-width:34em;padding-bottom:12px}
+.hero .en{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:#d6e2ec;margin-bottom:14px}
+.hero p.desc{font-size:1.1rem;color:#eef3f7}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero h1,.hero .intro{animation:rise .9s ease-out both}
+.hero .intro{animation-delay:.25s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ===== 四大面向（Stanford pillars） ===== */
+.pillars{border-bottom:1px solid var(--rule)}
+.pillars ul{display:grid;grid-template-columns:repeat(4,1fr);list-style:none}
+.pillars li{padding:40px 28px 44px;border-left:1px solid var(--rule)}
+.pillars li:first-child{border-left:0;padding-left:0}
+.pillars h2{font-size:1.45rem;margin-bottom:.5rem}
+.pillars p{color:var(--muted);font-size:.98rem;margin-bottom:14px}
+
+section.block{padding:96px 0}
+.mist{background:var(--mist)}
+
+/* ===== 專題故事（雜誌式 feature） ===== */
+.feature .wrap{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center}
+.feature img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.kicker{font-size:.95rem;color:var(--celadon);font-weight:700;margin-bottom:8px}
+.feature p{margin-bottom:1rem}
+
+/* ===== 數字裡的醫學系 ===== */
+.facts .head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.facts dl{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+.facts div{display:grid;grid-template-columns:9.5rem 1fr;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid var(--rule)}
+.facts dt{font-family:var(--serif);font-weight:900;font-size:2.4rem;color:var(--navy);line-height:1.1}
+.facts dd{color:var(--ink)}
+.facts small{display:block;color:var(--muted);font-size:.85rem}
+
+/* ===== 教育目標 ===== */
+.edu .wrap{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+.edu blockquote{font-family:var(--serif);font-size:1.35rem;line-height:1.7;color:var(--navy);border-left:4px solid var(--celadon);padding-left:22px;margin:24px 0}
+ol.comp{list-style:none;counter-reset:n;border-top:2px solid var(--navy)}
+ol.comp li{counter-increment:n;display:grid;grid-template-columns:3rem 1fr;padding:16px 0;border-bottom:1px solid var(--rule)}
+ol.comp li::before{content:counter(n);font-family:var(--serif);font-weight:700;color:var(--celadon);font-size:1.2rem}
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:36px;border-top:1px solid var(--rule)}
+.method div{padding:20px 20px 20px 0}
+.method h3{font-size:1.05rem}
+.method p{font-size:.92rem;color:var(--muted)}
+
+/* ===== 臨床訓練（三欄圖文） ===== */
+.clinic .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px}
+.clinic img{aspect-ratio:3/2;object-fit:cover;width:100%;margin-bottom:18px}
+.clinic p{font-size:.96rem;color:var(--muted)}
+.hospitals{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;list-style:none}
+.hospitals li{border:1px solid var(--rule);padding:6px 14px;font-size:.92rem;background:#fff}
+.hospitals li.main{border-color:var(--navy);color:var(--navy);font-weight:700}
+
+/* ===== 招生橫幅（Harvard banner） ===== */
+.banner{background:var(--navy);color:#fff}
+.banner .wrap{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:52px 0}
+.banner h2{color:#fff;margin-bottom:.3rem}
+.banner p{color:#d6e2ec}
+
+/* ===== 最新消息（Harvard：頭條 + 清單） ===== */
+.news .grid{display:grid;grid-template-columns:7fr 5fr;gap:56px;margin-top:12px}
+.lead img{width:100%;aspect-ratio:49/22;object-fit:cover;margin-bottom:18px;background:var(--mist)}
+figure.photo{margin:0}
+figure.photo figcaption{font-size:.85rem;color:var(--muted);margin-top:10px}
+.lead h3{font-size:1.5rem}
+.lead a,.list a{color:var(--navy);text-decoration:none}
+.lead a:hover,.list a:hover{text-decoration:underline}
+.meta{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+.meta .cat{color:var(--celadon);font-weight:700;margin-right:10px}
+.list{list-style:none;border-top:2px solid var(--navy)}
+.list li{padding:18px 0;border-bottom:1px solid var(--rule)}
+.list h3{font-size:1.08rem;margin:0}
+
+/* ===== 影片 ===== */
+.film .wrap{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+.film video{width:100%;aspect-ratio:16/9;background:#000}
+.film .note{font-size:.88rem;color:var(--muted);margin-top:12px}
+
+/* ===== 學生作品導引 ===== */
+.works-cta .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:end}
+.works-cta .text{grid-column:span 1}
+.works-cta a.tile{position:relative;display:block;color:#fff;text-decoration:none;overflow:hidden}
+.works-cta a.tile img{aspect-ratio:4/5;object-fit:cover;width:100%;transition:transform .5s}
+.works-cta a.tile:hover img{transform:scale(1.04)}
+.works-cta a.tile span{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(10,20,32,.85));font-family:var(--serif);font-size:1.15rem}
+
+/* ===== 頁尾 ===== */
+footer{background:var(--ink);color:#c3ced8;font-size:.93rem;padding:64px 0 28px}
+footer .cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+footer h4{color:#fff;font-family:var(--serif);font-size:1.05rem;margin-bottom:12px}
+footer ul{list-style:none}footer li{margin:5px 0}
+footer a{color:#c3ced8;text-decoration:none}footer a:hover{color:#fff;text-decoration:underline}
+footer .brandline{display:flex;gap:12px;align-items:center;margin-bottom:16px}
+footer .brandline img{width:40px}
+footer .brandline b{font-family:var(--serif);color:#fff;font-size:1.15rem}
+.credits{font-size:.82rem;color:#9fb0bf;margin-top:28px;max-width:none}
+.legal{border-top:1px solid rgba(255,255,255,.14);margin-top:20px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
+details.ailog{margin-top:36px;border:1px solid rgba(255,255,255,.16);padding:18px 22px}
+details.ailog summary{cursor:pointer;color:#fff;font-weight:700}
+details.ailog ol{margin:16px 0 0 1.3rem}
+details.ailog li{margin-bottom:16px}
+details.ailog .p{background:rgba(255,255,255,.06);padding:12px 14px;white-space:pre-wrap;color:#e9eef3;font-size:.88rem}
+details.ailog .n{color:#a9b7c4;font-size:.86rem;margin-top:6px;max-width:none}
+
+/* ===== 響應式 ===== */
+@media (max-width:1000px){
+  .menu-btn{display:block}
+  nav.main{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--rule);max-height:80vh;overflow:auto}
+  nav.main.open{display:block}
+  nav.main>ul{flex-direction:column;padding:8px 20px 16px}
+  nav.main>ul>li>a{padding:12px 0}
+  .sub{position:static;display:block;border:0;box-shadow:none;padding:0 0 8px 12px;min-width:0}
+  .pillars ul{grid-template-columns:1fr 1fr}
+  .pillars li:nth-child(3){border-left:0;padding-left:0}
+  .pillars li{border-top:1px solid var(--rule)}
+  .feature .wrap,.edu .wrap,.news .grid,.film .wrap{grid-template-columns:1fr;gap:36px}
+  .facts dl{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .brand small{display:none}
+  .brand img{width:40px;height:40px}
+  section.block{padding:64px 0}
+  .hero .wrap{grid-template-columns:1fr;gap:28px;min-height:auto;padding:56px 0}
+  .hero h1{font-size:2.5rem}
+  h1.vt{flex-direction:column;gap:0}
+  h1.vt span{width:auto;text-align:left;line-height:1.3;padding-top:0!important}
+  .pillars ul{grid-template-columns:1fr}
+  .pillars li{border-left:0;padding-left:0}
+  .facts div{grid-template-columns:1fr;gap:4px}
+  .method,.clinic .grid{grid-template-columns:1fr}
+  .banner .wrap{grid-template-columns:1fr}
+  .works-cta .wrap{grid-template-columns:1fr 1fr}
+  .works-cta .text{grid-column:1/-1}
+  footer .cols{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+
+<div class="utility">
+  <div class="wrap">
+    <div>
+      <a href="https://www.tcu.edu.tw/" target="_blank" rel="noopener">慈濟大學</a>
+      <a href="https://cmed.tcu.edu.tw/" target="_blank" rel="noopener">醫學院</a>
+      <a href="https://www.tzuchi.com.tw/" target="_blank" rel="noopener">花蓮慈濟醫院</a>
+    </div>
+    <a class="apply" href="https://med.tcu.edu.tw/?page_id=183" target="_blank" rel="noopener">招生資訊</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="graph/logo.svg" alt="">
+      <span><b>慈濟大學醫學系</b><small>Tzu Chi University School of Medicine</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">選單</button>
+    <nav class="main" id="nav" aria-label="主選單">
+      <ul>
+        <li><a href="index.html" aria-current="page">系所簡介</a>
+          <ul class="sub">
+            <li><a href="#about">關於本系</a></li>
+            <li><a href="#facts">數字裡的醫學系</a></li>
+            <li><a href="https://med.tcu.edu.tw/?page_id=16" target="_blank" rel="noopener">系所組織</a></li>
+          </ul>
+        </li>
+        <li><a href="#education">教育</a>
+          <ul class="sub">
+            <li><a href="#education">教育目標與核心能力</a></li>
+            <li><a href="https://med.tcu.edu.tw/?page_id=117" target="_blank" rel="noopener">課程規劃</a></li>
+            <li><a href="https://med.tcu.edu.tw/?page_id=125" target="_blank" rel="noopener">PBL 課程</a></li>
+          </ul>
+        </li>
+        <li><a href="#clinic">臨床訓練</a>
+          <ul class="sub">
+            <li><a href="#feature">無語良師</a></li>
+            <li><a href="#clinic">實習醫院網絡</a></li>
+            <li><a href="https://msc.tcu.edu.tw/" target="_blank" rel="noopener">模擬醫學中心</a></li>
+          </ul>
+        </li>
+        <li><a href="#news">最新消息</a></li>
+        <li><a href="studentworks.html">學生作品</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero：慈濟大學中央校區外觀（照片來源：慈濟大學校園導覽），日後可替換為自行拍攝的照片 -->
+  <section class="hero">
+    <img src="graph/hero.jpg" alt="慈濟大學中央校區外觀">
+    <div class="wrap">
+      <h1 class="vt" aria-label="尊重生命 以人為本"><span>尊重生命</span><span>以人為本</span></h1>
+      <div class="intro">
+        <p class="en">Tzu Chi University School of Medicine, Hualien, since 1994</p>
+        <p class="desc">東臺灣唯一的醫學系。我們以無語良師的人文教育、標準化病人的臨床訓練，以及遍布全臺的慈濟醫院實習網絡，培育術德兼修、視病如親的良醫。</p>
+        <div class="actions">
+          <a class="btn fill" href="#about">認識本系</a>
+          <a class="btn line" href="#film">觀看系所影片</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars" aria-label="本系四大面向">
+    <div class="wrap">
+      <ul>
+        <li><h2>教育</h2><p>以成果導向設計課程，對準畢業生的六大核心能力。</p><a class="more" href="#education">教育目標</a></li>
+        <li><h2>臨床</h2><p>花蓮、台北、台中、大林四家慈濟醫院共同培育實習醫學生。</p><a class="more" href="#clinic">臨床訓練</a></li>
+        <li><h2>人文</h2><p>從大體老師的生命故事，學會感恩與尊重。</p><a class="more" href="#feature">無語良師</a></li>
+        <li><h2>學生</h2><p>研究發表、醫療服務與國際交流的學習成果。</p><a class="more" href="studentworks.html">學生作品</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block edu" id="about">
+    <div class="wrap">
+      <div>
+        <h2>關於本系</h2>
+        <p class="lede">本系於民國83年10月16日慈濟醫學院創校時成立，秉持創辦人證嚴法師「無緣大慈，同體大悲」的精神。</p>
+        <blockquote>培養術德兼修、關懷生命、擁有慈濟大愛與利他情懷，善於溝通、重視團隊合作，樂於承擔社會責任的良醫。</blockquote>
+        <p>我們期望提升東臺灣的醫療資源與醫學教育發展，守護東臺灣民眾的健康。民國89年學校更名為「慈濟大學」，自97學年度起連續獲教育部「教學卓越計畫」獎助。</p>
+      </div>
+      <div id="education">
+        <h2>畢業生六大核心能力</h2>
+        <ol class="comp">
+          <li>優良的醫學專業知識與技能</li>
+          <li>良好的人際關係與溝通能力</li>
+          <li>主動及終身學習的習慣，並應用於臨床工作的改善</li>
+          <li>醫學人文與倫理的專業素養</li>
+          <li>在醫療與健康照護體系中執業的能力</li>
+          <li>提供以病人為中心、基於實證的全人醫療</li>
+        </ol>
+        <div class="method">
+          <div><h3>器官系統整合</h3><p>基礎醫學搭配臨床情境，提早銜接臨床經驗。</p></div>
+          <div><h3>PBL 與 TBL</h3><p>小組問題導向學習，養成自主學習能力。</p></div>
+          <div><h3>多元評量</h3><p>以 OSCE、mini-CEX、Portfolio 評估臨床能力。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block mist feature" id="feature">
+    <div class="wrap">
+      <figure class="photo">
+        <img src="graph/silent-mentor.jpg" alt="醫學生參與無語良師送靈典禮" loading="lazy">
+        <figcaption>無語良師送靈典禮。照片：慈濟大學醫學系</figcaption>
+      </figure>
+      <div>
+        <p class="kicker">人文專題</p>
+        <h2>無語良師：解剖課的第一堂，是拜訪家屬</h2>
+        <p>在慈大，醫學生上解剖課之前，會先拜訪大體老師的家屬，聆聽老師的生命故事。透過啟用、送靈與感恩追思典禮，學生學到的不只是人體構造，更是對生命的尊重。</p>
+        <p>本系自2003年起開設大體模擬手術教學，讓實習醫學生在最接近真實病人的條件下學習手術技能。</p>
+        <a class="more" href="https://msc.tcu.edu.tw/" target="_blank" rel="noopener">認識模擬醫學中心</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block facts" id="facts">
+    <div class="wrap">
+      <div class="head">
+        <h2>數字裡的醫學系</h2>
+        <a class="more" href="https://med.tcu.edu.tw/?page_id=2" target="_blank" rel="noopener">教學目的與特色</a>
+      </div>
+      <dl>
+        <div><dt>1994</dt><dd>隨慈濟醫學院創校成立，是東臺灣唯一的醫學系</dd></div>
+        <div><dt>4–5 人</dt><dd>每組醫學生即分配一位大體老師，人人都有實作機會</dd></div>
+        <div><dt>40,000+</dt><dd>人簽署大體捐贈志願書<small>捐贈風氣居世界之先</small></dd></div>
+        <div><dt>1,700+</dt><dd>位來自 57 個國家地區、42 所海外大學的醫學生來校學習模擬手術</dd></div>
+        <div><dt>12,000+</dt><dd>人次臨床醫師在此參與進階術式訓練<small>來自 39 個醫學會</small></dd></div>
+        <div><dt>第 64 名</dt><dd>慈濟大學於 2025 年泰晤士高等教育影響力排名 SDG3「健康與福祉」全球排名</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block mist clinic" id="clinic">
+    <div class="wrap">
+      <h2>從臨床技能中心到床邊</h2>
+      <p class="lede">實習醫學生在四家慈濟醫院與偏鄉分院之間輪訓，接觸不同區域的醫療型態與病人。</p>
+      <div class="grid">
+        <article>
+          <img src="graph/clinical-skills.jpg" alt="醫學生在臨床技能中心接受標準化病人訓練" loading="lazy">
+          <h3>良語良師</h3>
+          <p>慈濟志工擔任標準化病人，協助學生精進問診、溝通與身體檢查，也參與國家級 OSCE 測驗。</p>
+        </article>
+        <article>
+          <img src="graph/clinical-network.jpg" alt="醫學生臨床技能實作訓練" loading="lazy">
+          <h3>跨院區實習網絡</h3>
+          <p>臨床實習由花蓮、台北、台中、大林慈濟醫院共同承擔，並與玉里、關山分院合作社區醫療。</p>
+        </article>
+        <article>
+          <img src="graph/bedside-teaching.jpg" alt="同學在師長指導下操作手持式超音波" loading="lazy">
+          <h3>典範傳承的床邊教學</h3>
+          <p>教學型主治醫師以小組教學帶領學生面對真實病人；從手持式超音波到身體檢查，都在師長身邊從做中學。</p>
+        </article>
+      </div>
+      <ul class="hospitals" aria-label="合作實習醫院">
+        <li class="main">花蓮慈濟醫學中心</li>
+        <li>台北慈濟醫院</li>
+        <li>台中慈濟醫院</li>
+        <li>大林慈濟醫院</li>
+        <li>玉里慈濟醫院</li>
+        <li>關山慈濟醫院</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="banner" aria-label="招生資訊">
+    <div class="wrap">
+      <div>
+        <h2>成為慈濟醫學生</h2>
+        <p>本系招生管道包含繁星推薦、個人申請、考試分發與校內轉系。</p>
+      </div>
+      <a class="btn fill" href="https://med.tcu.edu.tw/?page_id=183" target="_blank" rel="noopener">查看招生資訊</a>
+    </div>
+  </section>
+
+  <section class="block news" id="news">
+    <div class="wrap">
+      <h2>最新消息</h2>
+      <div class="grid">
+        <article class="lead">
+          <img src="graph/news-lead.png" alt="恭賀本系教師升等通過公告圖" loading="lazy">
+          <p class="meta"><span class="cat">榮譽榜</span><time datetime="2026-06-30">2026 年 6 月 30 日</time></p>
+          <h3><a href="https://med.tcu.edu.tw/?p=5892" target="_blank" rel="noopener">恭賀本系教師升等通過</a></h3>
+          <p>本系核子醫學科等教師通過升等審查，持續深耕教學、研究與臨床服務。</p>
+        </article>
+        <ul class="list">
+          <li><p class="meta"><span class="cat">榮譽榜</span><time datetime="2026-04-27">2026 年 4 月 27 日</time></p><h3><a href="https://med.tcu.edu.tw/?p=5890" target="_blank" rel="noopener">醫學系教師獲 113 學年度教學優良教師</a></h3></li>
+          <li><p class="meta"><span class="cat">榮譽榜</span><time datetime="2026-01-05">2026 年 1 月 5 日</time></p><h3><a href="https://med.tcu.edu.tw/?p=5539" target="_blank" rel="noopener">醫學系教師榮獲 113 學年度傑出導師</a></h3></li>
+          <li><p class="meta"><span class="cat">學生榮譽</span><time datetime="2026">2026 年</time></p><h3><a href="studentworks.html">110 級張凱博同學獲全國大專優秀青年</a></h3></li>
+          <li><p class="meta"><span class="cat">榮譽榜</span><time datetime="2025-04-21">2025 年 4 月 21 日</time></p><h3><a href="https://med.tcu.edu.tw/?p=5298" target="_blank" rel="noopener">醫學系教師獲 112 學年度教學優良教師</a></h3></li>
+        </ul>
+      </div>
+      <p style="margin-top:28px"><a class="more" href="https://med.tcu.edu.tw/?page_id=262" target="_blank" rel="noopener">所有消息</a></p>
+    </div>
+  </section>
+
+  <section class="block mist film" id="film">
+    <div class="wrap">
+      <div>
+        <h2>系所介紹影片</h2>
+        <p class="lede">走進慈濟醫學生的一天：從解剖教室、臨床技能中心到花蓮的病房。</p>
+        <p class="note">影片將於後續課程完成拍攝後更新。</p>
+      </div>
+      <!-- 影片預留：將自行拍攝的影片存為 graph/intro.mp4 即可替換 -->
+      <video controls preload="metadata" poster="graph/video-poster.jpg">
+        <source src="graph/intro.mp4" type="video/mp4">
+        您的瀏覽器不支援影片播放。
+      </video>
+    </div>
+  </section>
+
+  <section class="block works-cta">
+    <div class="wrap">
+      <div class="text">
+        <h2>學生作品</h2>
+        <p class="lede">研究、服務、人文反思與影像作品，記錄醫學生的成長。</p>
+        <p style="margin-top:18px"><a class="more" href="studentworks.html">瀏覽所有作品</a></p>
+      </div>
+      <a class="tile" href="studentworks.html"><img src="graph/work-outreach.jpg" alt="醫學院同學帶領民眾操作手持式超音波" loading="lazy"><span>走進醫療科技展</span></a>
+      <a class="tile" href="studentworks.html"><img src="graph/work-award.jpg" alt="醫學系同學獲全國醫學生高擬真競賽冠軍" loading="lazy"><span>全國高擬真競賽冠軍</span></a>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brandline"><img src="graph/logo.svg" alt=""><b>慈濟大學醫學系</b></div>
+        <p>97004 花蓮市中央路三段701號 勤耕樓 E902<br>No.701, Sec. 3, Zhongyang Rd., Hualien 97004, Taiwan</p>
+        <p>電話 03-8565301 分機 12040–12043</p>
+      </div>
+      <div>
+        <h4>本站</h4>
+        <ul>
+          <li><a href="index.html">系所簡介</a></li>
+          <li><a href="studentworks.html">學生作品</a></li>
+          <li><a href="#ai-log">AI 協作紀錄</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>學習資源</h4>
+        <ul>
+          <li><a href="https://med.tcu.edu.tw/?page_id=117" target="_blank" rel="noopener">課程規劃</a></li>
+          <li><a href="https://msc.tcu.edu.tw/" target="_blank" rel="noopener">模擬醫學中心</a></li>
+          <li><a href="https://lib.tcu.edu.tw/" target="_blank" rel="noopener">圖書館</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>關注我們</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/user/medmail8565301" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.facebook.com/groups/505951882763329/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://medclub.tcu.edu.tw/" target="_blank" rel="noopener">醫學系系學會</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AI 協作紀錄（加分項目） -->
+    <details class="ailog" id="ai-log">
+      <summary>AI 協作紀錄 AI collaboration record</summary>
+      <ol>
+        <li>
+          <div class="p">（貼上 CH04-3 系網頁作業說明與評分標準全文）……first explain what professor want us to do?</div>
+          <div class="n">筆記：先請 AI 解釋作業要求與評分標準，確認必要檔案（index.html、studentworks.html、graph 資料夾）、GitHub Pages 上線步驟與常見扣分點。</div>
+        </li>
+        <li>
+          <div class="p">do the all work and don't forget to fullfil the requirements so that i can past to the LJ. The idea is to make the medical department better in www.tcu.edu.tw and https://med.tcu.edu.tw/ as the department that need to make better</div>
+          <div class="n">筆記：指定以慈濟大學醫學系為改版對象。AI 擷取原系網內容，做出第一版：兩個頁面、graph 資料夾、相對路徑，以及預留的照片與影片位置。</div>
+        </li>
+        <li>
+          <div class="p">Please use others universities as examples to build my website and i need the best styles in the top raking of the best websites or for Univertity arround the world.</div>
+          <div class="n">筆記：第一版太像一般模板，所以請 AI 參考世界頂尖大學的網站。AI 分析了 Harvard、Stanford、Oxford 醫學院的首頁，並借用以下做法：Stanford 的四大面向區塊與雜誌式專題故事、Harvard 的頭條加清單新聞與招生橫幅、Oxford 的大量留白。另外加入東方特色的直書標題，並改用代表花蓮「山與海」的配色（慈濟藍、太平洋藍、中央山脈青）。直書標題一開始文字重疊，原因是網路字型沒有直排資訊，AI 改為每個字自動換行的寫法後修正。</div>
+        </li>
+        <li>
+          <div class="p">I need to have the reality pictures, and put were is any media i need you to put there, because the website looks great but without pictures is dificult to convice the teacher, you can go online and also use the TCU website to get some pictures.</div>
+          <div class="n">筆記：網站版面完成了，但照片都還是預留圖，說服力不夠，所以請 AI 改用真實照片。AI 從慈濟大學、醫學系、醫學院與電子報的網頁中，依照每張照片的說明文字與報導主題，為每個位置挑選真實照片，例如中央校區外觀、無語良師送靈典禮、同學操作手持式超音波、全國醫學生高擬真競賽冠軍、海外實習交流。AI 也依照片內容修改卡片文字與替代文字（alt），並在頁尾加上照片來源。遇到的問題：AI 的工作環境無法連線到 tcu.edu.tw 下載圖片，所以 AI 寫了下載程式 download-photos.bat，在我的電腦上執行後，照片會自動以正確檔名存進 graph 資料夾。影像作品區也改成點擊影片封面，就能前往 YouTube 觀看系學會的原始影片。</div>
+        </li>
+      </ol>
+    </details>
+
+    <p class="credits">照片來源：慈濟大學、慈濟大學醫學系、慈濟大學醫學院、慈濟大學電子報、見晴醫療服務隊網站。本站為課程作業，照片著作權屬原單位所有。</p>
+
+    <div class="legal">
+      <span>© 2026 慈濟大學醫學系 Tzu Chi University School of Medicine</span>
+      <span>網頁設計 Muhammad Abdula（系網頁設計課程作業）</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn=document.querySelector('.menu-btn'), nav=document.getElementById('nav');
+  btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'關閉':'選單'});
+  nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='選單'}));
+</script>
+</body>
+</html>
